@@ -28,3 +28,23 @@ def close_connection(exception):
 #---------------------------------------------------------------
 # end of copied code
 #---------------------------------------------------------------
+
+def get_s_classes():
+    try:
+        con = get_db()
+        con.row_factory = sql.Row
+        cur = con.cursor()
+        
+        get_sclasses_query = """
+        SELECT SClasses.id, Subjects.name, SClasses.reference from SClasses
+        JOIN Subjects on Subjects.id = SClasses.subjectId
+        """
+        cur.execute(get_sclasses_query)
+        data = cur.fetchall()
+        cur.close()            
+        return data        
+    except:
+        print("ERROR - Getting user from db")
+        return []
+    #end try
+#end def

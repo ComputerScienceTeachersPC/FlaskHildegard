@@ -1,30 +1,13 @@
 from flask import render_template, request
 from . import app
-from .models.db import *
+from .models.db import get_s_classes
 
 
 @app.route("/")
 @app.route("/index")
 def homepage():
-    try:
-        con = get_db()
-        con.row_factory = sql.Row
-        cur = con.cursor()
-        
-        get_user_query = """
-        SELECT SClasses.id, Subjects.name, SClasses.reference from SClasses
-        JOIN Subjects on Subjects.id = SClasses.subjectId
-        """
-        cur.execute(get_user_query)
-        data = cur.fetchall()
-        cur.close()            
-        if data is not None:
-            return render_template("index.html", class_data = data) 
-        #end if         
-    except:
-        print("ERROR - Getting user from db")
-        return render_template("index.html", class_data = [])
-    #end try
+    data = get_s_classes() # returns empty array if error  
+    return render_template("index.html", class_data = data) 
 #end def    
 
 
