@@ -1,0 +1,1 @@
+Put any javascript files in this folder or sub folders of this.

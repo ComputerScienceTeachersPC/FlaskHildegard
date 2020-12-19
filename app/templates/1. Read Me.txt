@@ -1,0 +1,1 @@
+This is a very basic implementation of flask. You can put all your templates in here. Remember there are other ways to do this with Blueprints and you should research these.

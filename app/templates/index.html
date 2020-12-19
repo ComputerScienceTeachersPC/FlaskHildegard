@@ -1,0 +1,40 @@
+{% extends "masterpage.html" %}
+{% set active_page = "" %}
+
+{% block head %}
+{{ super() }}
+<!-- 
+	put any extra CSS or itens to go in the head here 
+-->
+
+{% endblock %}
+
+{% block content %}
+<!-- 
+	put your main html here 
+-->
+<div class = "container pt-4">
+	<h3>Dashboard</h3>
+
+	<h6 class="mt-4">Classes</h6>
+	<ul class="list-group">
+		{% for class_item in class_data %}
+			<li class="list-group-item">{{class_item["name"]}} - {{class_item["reference"]}}</li>
+		{% endfor %}
+	</ul>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+{{ super() }}
+
+<!--  
+	put any extra javascript or items to go after the html here 
+-->
+<script>
+$(document).ready(function(){
+
+});
+</script>
+{% endblock %}
