@@ -3,7 +3,6 @@ from . import app
 from .models.db import *
 
 
-
 @app.route("/")
 @app.route("/index")
 def homepage():
@@ -21,9 +20,7 @@ def homepage():
         cur.close()            
         if data is not None:
             return render_template("index.html", class_data = data) 
-        #end if
-                                     
-                
+        #end if         
     except:
         print("ERROR - Getting user from db")
         return render_template("index.html", class_data = [])
